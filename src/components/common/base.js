@@ -44,12 +44,19 @@ export const Flex = styled.div`
         span {
             opacity: ${(props) => props.to && !props.cursorOpaFalse ? 0.85 : 1}
         }
-    }
+    };
+    ${(props) => props.shadow && `transition: background-color .3s,color .3s,box-shadow .3s;`}
+    ${(props) => props.shadow && `box-shadow: 0 0 0.1rem rgb(0 0 0 / 10%), 0 0.15rem 0.9rem rgb(0 0 0 / 10%);`};
+    ${(props) => props.scrollbarFalse && `
+    ::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;
+      }`}
 `;
 
 export const Row = styled(Flex)`
     flex-direction: row;
-    }
 `;
 
 export const Col = styled(Flex)`
@@ -84,21 +91,22 @@ export const ImageWrapper = styled(Flex)`
     overflow: hidden;
     width: ${(props) => props.width}px;
     height: ${(props) => props.height}px;
+    background-color: ${(props) => props.bg};
     margin: ${(props) => props.margin ? props.margin : 0}px;
 `;
 
-export const CirclePic = ({image, size, flex, margin, of, style}) => {
+export const CirclePic = ({image, size, flex, margin, bg, of, style, scale = 1}) => {
     return (
-        <ImageWrapper style={style} margin={margin} width={size} height={size} flex={flex}>
-            <Image of={of} width={size+'px'} height={size+'px'} src={image}/>
+        <ImageWrapper style={style} bg={bg} margin={margin} width={size} height={size} flex={flex}>
+            <Image of={of} width={size+'px'} height={size+'px'} style={{transform: `scale(${scale})`}} src={image}/>
         </ImageWrapper>
     )
 }
 
 export const Input = styled.input`
     ${props => props.margin};
-    width: ${props => props.size ? props.size : props.width};
-    height: ${props => props.size ? props.size : props.height};
+    width: ${props => props.width};
+    height: ${props => props.height};
     background-color: ${props => props.bg};
     ${props => props.padding};
     border-radius: ${props => props.circle ? '50%' : props.br};
@@ -109,13 +117,18 @@ export const Input = styled.input`
     font-size: ${props => props.size ? props.size : 15}px;
     line-height: ${props => props.lh}px;
     color: ${props => props.color};
+    border: 0;
+    color: ${(props) => props.color ? props.color : (ThemeEvent().darkMode ? "white" : "black")};
     transition: all 300ms ease;
+    ::placeholder {
+        color: ${(props) => props.placeholderTextColor};
+    };
 `;
 
 export const TextArea = styled.textarea`
     ${props => props.margin};
-    width: ${props => props.size ? props.size : props.width};
-    height: ${props => props.size ? props.size : props.height};
+    width: ${props => props.width};
+    height: ${props => props.height};
     background-color: ${props => props.bg};
     ${props => props.padding};
     border-radius: ${props => props.circle ? '50%' : props.br};
@@ -126,5 +139,14 @@ export const TextArea = styled.textarea`
     font-size: ${props => props.size ? props.size : 15}px;
     line-height: ${props => props.lh}px;
     color: ${props => props.color};
+    border: 0;
+    color: ${(props) => props.color ? props.color : (ThemeEvent().darkMode ? "white" : "black")};
     transition: all 300ms ease;
+    ::placeholder {
+        color: ${(props) => props.placeholderTextColor};
+    };
+    resize: none;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `;
