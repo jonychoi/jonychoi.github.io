@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {Flex, Col, Row, Text} from '../../components/common/base';
 import {Height, Width} from '../../hooks/getWindow';
+import {cats, dogs} from './imgs';
 
 export const AnimateCircle = styled(Flex)`
     border-radius: 50%;
@@ -59,13 +60,15 @@ export const Landing = ({darkMode}) => {
         setTimeout(() => setActivate(0), 500);
         setTimeout(() => setFirstDot({x: '30%', y: '50%'}), 3300);
         setTimeout(() => setActivate(1), 3300);
+        setTimeout(() => setRotate(45), 5900)
+        setTimeout(() => setActivate(2), 5900);
     }, [])
     return (
         <Flex width="100vw" height="100vh" position="relative" align="center" justify="center">
             <Head activate={activate} />
-            <Circle activate={activate >= 0} darkMode={darkMode} x={firstDot.x} y={firstDot.y} size={30} delay={700} speed={2000} />
+            <Circle activate={2 > activate && activate >= 0} darkMode={darkMode} x={firstDot.x} y={firstDot.y} size={30} delay={700} speed={1500} />
             <Line activate={activate >= 1} darkMode={darkMode} x={'calc(30% + 15px)'} y={"50%"} width={Width * 4 / 10 - 30} delay={1000} speed={2000} rotate={rotate} />
-            <Circle activate={activate >= 1} darkMode={darkMode} x={"70%"} y={"50%"} delay={1800} size={30} />
+            <Circle activate={2 > activate && activate >= 1} darkMode={darkMode} x={"70%"} y={"50%"} delay={activate == 2 ? 700 : 2000} size={30} />
         </Flex>
     )
 };
