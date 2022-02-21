@@ -4,7 +4,7 @@ const GlobalContext = createContext();
 
 export const GlobalProvider = ({children}) => {
     const [darkMode, setDarkMode] = useState(true);
-    const [sideBar, setSideBar] = useState(false);
+    const [categoryBar, setCategoryBar] = useState(false);
     return (
         <GlobalContext.Provider
             value={{
@@ -23,7 +23,7 @@ export const ThemeEvent = () => {
     return {darkMode, setDarkMode};
 }
 
-export const categoryBarEvent = () => {
+export const CategoryBarEvent = () => {
     const {categoryBar, setCategoryBar} = useContext(GlobalContext);
     return {categoryBar, setCategoryBar};
 }
