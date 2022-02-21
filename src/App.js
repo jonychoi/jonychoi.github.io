@@ -19,7 +19,7 @@ export const App = ({}) => {
     <div style={{height: '100vh', width: '100vw', backgroundColor: GlobalBgStyler(darkMode), transition: 'background-color 500ms'}}>
       <GlobalStyle darkMode={darkMode} />
       <Header />
-      <Landing />
+      <Landing darkMode={darkMode} />
       <CategoryBar darkMode={darkMode} />
       <Footer />
     </div>

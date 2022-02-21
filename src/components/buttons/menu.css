@@ -1,6 +1,6 @@
 #toggle-icon {
     cursor: pointer;
-    margin: 100px auto;
+    margin: auto;
     display: table;
 }
 .bar1, .bar2, .bar3 {

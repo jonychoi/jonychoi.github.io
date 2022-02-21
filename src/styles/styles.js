@@ -32,5 +32,5 @@ export const btnStyler = (darkMode) => {
 }
 
 export const GlobalBgStyler = (darkMode) => {
-    return darkMode ? "rgb(15, 15, 15)" : "rgb(255, 255, 255)";
+    return darkMode ? "rgb(0, 0, 0)" : "rgb(255, 255, 255)";
 }
