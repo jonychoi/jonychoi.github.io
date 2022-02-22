@@ -45,9 +45,10 @@ export const Line = ({activate, darkMode, x, y, width, delay, rotate, speed}) =>
 
 export const Head = ({activate}) => {
     return (
-        <Flex style={{opactiy: activate >= 0 ? 1 : 0, bottom: activate >= 0 ? '47%' : '33%', transition: 'all 1000ms', position: 'absolute'}} width="100%" margin="margin-bottom: 100px" justify="center" align="center">
-            <Text className="mont" size="22" style={{position: "absolute", opacity: activate == 0 ? 1 : 0, marginTop: activate == 0 ? 0 : 50, transition: 'all 1000ms'}}>We are living in a dot.</Text>
-            <Text className="mont" size="22" style={{position: "absolute", opacity: activate == 1 ? 1 : 0, marginTop: activate == 1 ? 0 : 50, transition: 'all 1000ms', transitionDelay: "1.25s"}}>Sometimes, we connect the dots.</Text>
+        <Flex position="absolute" width="100%" height="100%" margin="margin-bottom: 100px" justify="center" align="center">
+            <Text className="mont" size="22" style={{position: "absolute", opacity: activate == 0 ? 1 : 0, top: activate == 0 ? '47%' : '55%', transition: 'all 1000ms'}}>We are living in a dot.</Text>
+            <Text className="mont" size="22" style={{position: "absolute", opacity: activate == 1 ? 1 : 0, top: activate == 1 ? '47%' : '55%', transition: 'all 1000ms', transitionDelay: "1.25s"}}>Sometimes, we connect the dots.</Text>
+            <Text className="mont" size="22" style={{position: "absolute", opacity: activate == 2 ? 1 : 0, top: activate == 2 ? '20%' : '55%', transition: 'all 1500ms', transitionDelay: "1.5s"}}>And sometimes, we also try to classify things.</Text>
         </Flex>
     )
 }
@@ -60,8 +61,9 @@ export const Landing = ({darkMode}) => {
         setTimeout(() => setActivate(0), 500);
         setTimeout(() => setFirstDot({x: '30%', y: '50%'}), 3300);
         setTimeout(() => setActivate(1), 3300);
-        setTimeout(() => setRotate(45), 5900)
-        setTimeout(() => setActivate(2), 5900);
+        setTimeout(() => setRotate(45), 6500)
+        setTimeout(() => setActivate(2), 6500);
+        setTimeout(() => setActivate(3), 9500);
     }, [])
     return (
         <Flex width="100vw" height="100vh" position="relative" align="center" justify="center">
