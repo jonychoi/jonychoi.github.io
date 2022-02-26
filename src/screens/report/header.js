@@ -3,19 +3,19 @@ import {Flex, Col, Row, Text, Image} from '../../components/common/base';
 import cvlab from '../../imgs/cvlab.png';
 import Timeline from './timeline';
 
-export const Header = ({darkMode}) => {
+export const Header = ({page, setPage, darkMode}) => {
     return (
         <Col width="100%">
-            <Row align="center" justify="space-between" padding="padding: 0px 10px;">
+            <Row align="center" justify="space-between">
                 <Col>
-                    <Text size="26" weight="700">Computer Vision Lab Intern Report</Text>
-                    <Text style={{opacity: 0.8}} margin="margin: 5px 0px; margin-top: 15px;">CVLAB @ Dept. of Computer Science & Engineering, Korea Univ.</Text>
+                    <Text size="30" weight="700" className='mont'>COMPUTER VISION LAB INTERN LOG</Text>
+                    <Text style={{opacity: 0.8}} margin="margin: 5px 0px; margin-top: 15px;" className='mont'>Report for Jan 3 - Feb 28 Winter 2022 @ Computer Vision Lab.</Text>
                 </Col>
                 <Col>
                     <Image src={cvlab} height="30px" of="contain" />
                 </Col>
             </Row>
-            <Timeline darkMode={darkMode} />
+            <Timeline page={page} setPage={setPage} darkMode={darkMode} />
         </Col>
     )
 }

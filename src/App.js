@@ -15,11 +15,11 @@ import CategoryBar from './components/categorybar';
 import Report from './screens/report';
 
 export const App = ({}) => {
-  const {darkMode} = ThemeEvent();
+  const {darkMode, setDarkMode} = ThemeEvent();
   return (
     <div style={{height: '100vh', width: '100vw', backgroundColor: GlobalBgStyler(darkMode), transition: 'background-color 500ms'}}>
       <GlobalStyle darkMode={darkMode} />
-      <Header />
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <Report darkMode={darkMode} />
       <Landing darkMode={darkMode} />
       <CategoryBar darkMode={darkMode} />

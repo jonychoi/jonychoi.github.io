@@ -29,9 +29,9 @@ export const Time = ({darkMode, width}) => {
     )
 }
 
-export const Timeline = ({darkMode}) => {
+export const Timeline = ({page, setPage, darkMode}) => {
     return (
-        <Col shadow={true} br="20px" width="100%" height="200px" padding="padding: 20px;" bg={bgStyler(darkMode)} margin="margin-top: 20px;" position="relative">
+        <Col shadow={true} br="20px" width="100%" height="200px" padding="padding: 20px;" bg={darkMode ? "rgb(20, 20, 20)" : "white"} margin="margin-top: 20px;" position="relative">
             <Text size="18" weight="600" margin="margin-bottom: 20px;">Timeline</Text>
             <Time width={100} darkMode={darkMode} />
         </Col>
