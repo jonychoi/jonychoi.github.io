@@ -12,6 +12,7 @@ import Footer from './components/footer';
 
 import Landing from './screens/landing';
 import CategoryBar from './components/categorybar';
+import Report from './screens/report';
 
 export const App = ({}) => {
   const {darkMode} = ThemeEvent();
@@ -19,6 +20,7 @@ export const App = ({}) => {
     <div style={{height: '100vh', width: '100vw', backgroundColor: GlobalBgStyler(darkMode), transition: 'background-color 500ms'}}>
       <GlobalStyle darkMode={darkMode} />
       <Header />
+      <Report darkMode={darkMode} />
       <Landing darkMode={darkMode} />
       <CategoryBar darkMode={darkMode} />
       <Footer />
