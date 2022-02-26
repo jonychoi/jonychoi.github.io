@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import "./themetoggle.css";
-import {MoonIcon, SunIcon} from '../icons/darkmode';
+import {MoonIcon, SunIcon} from '../../icons/darkmode';
 
 const updateTheme = (isDarkEnabled) => {
   // Get CSS variables for background/foreground

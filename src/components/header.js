@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {ThemeEvent} from '../contexts/GlobalContext';
 import {Flex, Col, Row, Text} from './common/base';
 import ThemeToggle from './buttons/themeToggle';
-import {Logo, Wings} from './icons/logo';
+import {Logo, Wings} from '../icons/logo';
 import Menu from './buttons/menu';
 
 

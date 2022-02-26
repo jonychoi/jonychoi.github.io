@@ -4,7 +4,7 @@ import {Flex, Col, Row, Text} from './common/base';
 import styled from 'styled-components';
 import ThemeToggle from './buttons/themeToggle';
 
-import {Logo} from './icons/logo';
+import {Logo} from '../icons/logo';
 import { extremehueBlue } from '../styles/styles';
 
 export const IconWrap = styled(Col)`
