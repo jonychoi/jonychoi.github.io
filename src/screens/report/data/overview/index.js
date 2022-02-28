@@ -3,9 +3,7 @@ export default {
     contents: [
         {
             title: "Abstract",
-            description: `I remember what I said when I first met the professor in the lab. "I'm going to explore deeply where we come from, 
-            where we should go, and how we communicate with the essence of our lives." The professor Kim said he wish to 
-            find the answer here. Did I find the answer? It was a short term, but I would say I can say the answer.`
+            description: `Constructing...`
         },
         {
             title: "Briefly, I’ve done/am progressing on below things",
