@@ -1,6 +1,8 @@
-export default [
+export default {
+    title: "Lab Semina",
+    contents: [
         {
-            title: "Lab Semina",
-            page: 0,
+            title: "Overview",
         }
     ]
+}

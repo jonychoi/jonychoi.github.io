@@ -1,7 +1,9 @@
-export default [
+export default {
+    title: "Overview",
+    contents: [
         {
-            title: "Overview",
-            page: 0,
-            description: "Hi this is su hyung choi"
+            title: "Intern Report @ CVLAB, 2022 Winter",
+            description: "Adding !"
         }
     ]
+}

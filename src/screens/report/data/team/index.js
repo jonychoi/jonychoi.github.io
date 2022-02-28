@@ -1,6 +1,8 @@
-export default [
+export default {
+    title: "Team Semina",
+    contents: [
         {
-            title: "Team Semina",
-            page: 0,
+            title: "Overview",
         }
     ]
+}
