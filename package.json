@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://jonychoi.github.io",
+  "homepage": "https://jonychoi.github.io/",
   "eslintConfig": {
     "extends": [
       "react-app",
