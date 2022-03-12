@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Flex, Col, Row, Text} from '../../components/common/base';
-import { bgStyler, extremehueBlue } from '../../styles/styles';
+import { bgStyler, unlimitColor } from '../../styles';
 import styled from 'styled-components';
 
 export const Bar = styled(Flex)`
-    background-color: ${extremehueBlue};
+    background-color: ${unlimitColor};
     height: 2px;
     width: 100%;
 `;

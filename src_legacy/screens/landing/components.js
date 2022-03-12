@@ -53,7 +53,7 @@ export const Head = ({activate}) => {
     )
 }
 
-export const Landing = ({darkMode}) => {
+export const Main = ({darkMode}) => {
     const [activate, setActivate] = useState(-1);
     const [firstDot, setFirstDot] = useState({x: '50%', y: '50%'});
     const [rotate, setRotate]= useState(0);
@@ -75,4 +75,4 @@ export const Landing = ({darkMode}) => {
     )
 };
 
-export default Landing;
+export default Main;

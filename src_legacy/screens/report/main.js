@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Flex, Col, Row, Text, CirclePic} from '../../components/common/base';
-import { bgStyler, blueLowColor, extremehueBlue } from '../../styles/styles';
+import { bgStyler, blueLowColor, unlimitColor } from '../../styles';
 import {BackIcon, RightIcon} from '../../icons/utilities';
 import me from '../../imgs/me.jfif';
 
@@ -31,10 +31,10 @@ export const Main = ({head, content, page, setPage, darkMode}) => {
                     </Text>
                 </Flex>
                 {page != 0 && <Flex to="cursor" onClick={() => setPage(page - 1)} style={{position: 'absolute', top: "50%", left: -50, transform: 'rotate(180deg)'}}>
-                    <RightIcon height="30px" width={20} stroke={darkMode ? extremehueBlue : "black"} />
+                    <RightIcon height="30px" width={20} stroke={darkMode ? unlimitColor : "black"} />
                 </Flex>}
                 <Flex to="cursor" onClick={() => setPage(page + 1)} style={{position: 'absolute', top: "50%", right: -50}}>
-                    <RightIcon height="30px" width={20} stroke={darkMode ? extremehueBlue : "black"} />
+                    <RightIcon height="30px" width={20} stroke={darkMode ? unlimitColor : "black"} />
                 </Flex>
             </Col>
         </Col>

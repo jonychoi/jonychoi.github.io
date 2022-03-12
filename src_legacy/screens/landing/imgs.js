@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Flex, Image } from '../../components/common/base'
-import {AnimateCircle} from './landing1';
+import {AnimateCircle} from './components';
 
 import cat1 from '../../imgs/cat1.jpg'
 import cat2 from '../../imgs/cat2.jpg'
