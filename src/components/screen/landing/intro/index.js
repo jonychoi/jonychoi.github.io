@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {FirstCircle, SecondCircle, Line, HeadText} from './components';
+import {FirstCircle, SecondCircle, Line, HeadText, LineX, LineY} from './components';
 import { Flex } from '../../../common/base';
 import Main from './legacy';
 
@@ -26,6 +26,8 @@ export const Intro = ({}) => {
             <FirstCircle activate={activate} />
             <SecondCircle activate={activate} />
             <Line activate={activate} />
+            <LineX activate={activate} />
+            <LineY activate={activate} />
             <HeadText activate={activate} />
             {/* <Main darkMode={true} /> */}
         </Flex>

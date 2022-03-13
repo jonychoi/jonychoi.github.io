@@ -22,8 +22,8 @@ export const AnimateLine = styled(Flex)`
     height: 1.5px;
     transition: all ease 1500ms;
     opacity: ${(props) => props.activate ? 1 : 0};
-    left: ${Width / 2 - 325}px;
-    top: ${circleinitalpoint.y + 15}px;
+    left: ${(props) => props.left ? props.left : Width / 2 - 325}px;
+    top: ${(props) => props.top ? props.top : circleinitalpoint.y + 15}px;
     transform: rotate(${(props) => props.rotate}deg);
     position: absolute;
     transition-delay: ${(props) => props.delay}ms;
@@ -85,6 +85,49 @@ export const Line = ({activate}) => {
     }, [activate]);
     return (
         <AnimateLine activate={_activate} rotate={rotate} delay={delay} />
+    )
+};
+
+export const LineX = ({activate}) => {
+    const [_activate, set_Activate] = useState(false);
+    const [rotate, setRotate] = useState(0);
+    const [delay, setDelay] = useState(0);
+    const [top, setTop] = useState(0);
+    useEffect(() => {
+        const animator = () => {
+            if (activate == 3){
+                set_Activate(true);
+                setTop(Height / 2 + 200)
+            } else if (activate == 4){
+                setTop(circleinitalpoint.y + 15);
+            }
+        }
+        animator()
+    }, [activate]);
+    return (
+        <AnimateLine activate={_activate} rotate={rotate} delay={delay} style={{top: top}} />
+    )
+};
+
+export const LineY = ({activate}) => {
+    const [_activate, set_Activate] = useState(false);
+    const [rotate, setRotate] = useState(0);
+    const [delay, setDelay] = useState(0);
+    const [left, setLeft] = useState(0);
+    useEffect(() => {
+        setRotate(90);
+        const animator = () => {
+            if (activate == 3){
+                set_Activate(true);
+                setLeft(Width / 2 - 325 - 200);
+            } else if (activate == 4){
+                setLeft(Width / 2 - 325);
+            }
+        }
+        animator()
+    }, [activate]);
+    return (
+        <AnimateLine activate={_activate} rotate={rotate} delay={delay} style={{left: left}} />
     )
 };
 
