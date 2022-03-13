@@ -10,8 +10,8 @@ export const Screen = ({}) => {
     const [route, setRoute] = useState(0);
     return (
         <div width="100vw" height="100vh">
-            <AI route={route} setRoute={setRoute} />
             <Landing route={route} setRoute={setRoute} />
+            <AI route={route} setRoute={setRoute} />
             <Life route={route} setRoute={setRoute} />
             <UniversalPhysics route={route} setRoute={setRoute} />
         </div>
