@@ -12,12 +12,15 @@ import { RouteEvent } from '../../contexts/globalContext';
 
 const CloseOpenBtn = styled(Flex)`
     height: 100%;
-    width: 30px;
-    align-items: flex-start;
-    justify-content: flex-start;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
     padding-top: 15px;
     opacity: 0.24;
     cursor: pointer;
+    svg {
+        transform: rotate(${(props) => props.open ? '180deg' : '0deg'});
+    }
     :hover {
         opacity: 1;
         svg {
@@ -31,12 +34,14 @@ const CloseOpenBtn = styled(Flex)`
 export const RightBar = ({}) => {
     // 임시
     const [link, setLink] = useState(null);
+
+    const [open, setOpen] = useState(true);
     
     //not temp
     const {route, setRoute} = RouteEvent();
     return (
-        <Row width="320px" position="fixed" height="100vh" shadow={true} style={{right: 0, top: 0, zIndex: 1000}}>
-            <CloseOpenBtn>
+        <Row width="340px" position="fixed" height="100vh" shadow={true} style={{right: open ? 0 : -300, top: 0, zIndex: 1000, transition: 'all 300ms'}}>
+            <CloseOpenBtn onClick={() => setOpen(!open)} open={open}>
                 <LeftIcon height={25} width={10} strokeWidth="3" />
             </CloseOpenBtn>
             <Flex width="100%" height="100%" style={{display: 'block', overflowY: 'scroll'}} bg={componentBger()}>
