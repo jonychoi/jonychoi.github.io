@@ -5,6 +5,7 @@ import Header from './components/common/header';
 import DockBar from './components/common/dockbar';
 import GlobalStyle from './styles/globalStyles';
 import { ThemeEvent } from './contexts/globalContext';
+import RightBar from './components/common/rightbar';
 
 export const App = ({}) => {
     const {darkMode} = ThemeEvent();
@@ -13,6 +14,7 @@ export const App = ({}) => {
             <GlobalStyle darkMode={darkMode} />
             <Screen />
             <Header />
+            <RightBar />
             <DockBar />
         </div>
     )

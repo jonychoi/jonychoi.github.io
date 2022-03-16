@@ -1,18 +1,97 @@
 import React, {useState} from 'react';
 import {Col, Row, Flex, Text} from './base';
+import mainstructure from '../screen/landing/structure';
+import aistructure from '../screen/ai/structure';
+import lifestructure from '../screen/life/structure';
+import universalstructure from '../screen/universalphysics/structure';
+import jonystructure from '../screen/jony/structure'
+import { componentBger, darkMode, unlimitColor } from '../../styles';
+import {LeftIcon} from '../icons/utilities';
+import styled from 'styled-components';
+import { RouteEvent } from '../../contexts/globalContext';
+
+const CloseOpenBtn = styled(Flex)`
+    height: 100%;
+    width: 30px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 15px;
+    opacity: 0.24;
+    cursor: pointer;
+    :hover {
+        opacity: 1;
+        svg {
+            path {
+                stroke: #00dcff;
+            }
+        }
+    };
+`;
 
 export const RightBar = ({}) => {
+    // 임시
+    const [link, setLink] = useState(null);
+    
+    //not temp
+    const {route, setRoute} = RouteEvent();
     return (
-        <Col width="400px" height="100vh" position="fixed" padding="padding: 15px;" style={{right: 0, top: 0, zIndex: 1000}}>
-            
+        <Row width="320px" position="fixed" height="100vh" shadow={true} style={{right: 0, top: 0, zIndex: 1000}}>
+            <CloseOpenBtn>
+                <LeftIcon height={25} width={10} strokeWidth="3" />
+            </CloseOpenBtn>
+            <Flex width="100%" height="100%" style={{display: 'block', overflowY: 'scroll'}} bg={componentBger()}>
+                <Category link={link} setLink={setLink} items={route == 1 && mainstructure || route == 2 && aistructure || route == 3 && universalstructure || route == 4 && lifestructure || route == 5 && jonystructure} type={0} />
+            </Flex>
+        </Row>
+    )   
+};
+
+export const Category = ({link, setLink, items, type}) => {
+    const [open, setOpen] = useState(type == 0 || type == 1 ? true : false);
+    return (
+        <Col overflow="hidden" style={{height: open ? 'auto' : type == 0 ? 50 : 34}}>
+            {!(type === 1 && !items.subcontents || (type === 2 && !items.subcontents) || (type === 3 && !items.subcontents)) && <Btn open={open} setOpen={setOpen} link={link} items={items} setLink={setLink} text={items.title} type={type} />}
+            {items.contents != undefined ? items.contents.map(item => <Category link={link} setLink={setLink} type={type + 1} key={item.title} items={item} />)
+            : 
+            items.subcontents != undefined ? items.subcontents.map(item => <Category link={link} setLink={setLink} type={type + 1} key={item.title} items={item} />)
+            : 
+            <Btn open={open} setOpen={setOpen} link={link} items={items} setLink={setLink} text={items.title} type={type} key={items.title} />}
         </Col>
     )
 }
 
-export const Button = ({}) => {
-    return (
-        <Col width="100%" height="150px" br="15px">
+export const BtnText = styled(Text)`
+    font-size: ${(props) => props.type === 0 ? "17px" : props.type === 1 ? "15px" : "12.8px"};
+    font-weight: ${(props) => props.type === 0 ? "700" : props.type === 1 ? "600" : props.type === 2 ? "400" : "300"};
+    margin-left: ${(props) => props.type === 0 && 10 || props.type === 3 && 20 || props.type === 2 && 10}px;
+    line-height: ${(props) => props.type === 0 ? 18 : props.type === 1 ? 16 : 16}px;
+    color: ${(props) => props.type >= 2 && props.text === props.link && "#00dcff"};
+`;
 
-        </Col>
+export const BtnWrap = styled(Row)`
+    padding: ${(props) => props.type === 0 ? "15px 10px 10px 10px" : props.type === 1 ? "10px 10px 10px 20px;" : "8px 10px 10px 20px;"};
+    cursor: pointer;
+    opacity: ${(props) => props.type === 0 ? 1 : props.type === 1 || 2 ? props.text === props.link ? 1 : 0.9 : 0.8};
+    :hover {
+        opacity: 1;
+    };
+    transition: all 300ms;
+    user-select: none;
+    border-left: ${(props) => props.type <= 1 && 'solid 1px #00dcff'};
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const Btn = ({open, setOpen, link, setLink, text, type, items}) => {
+    return (
+        <BtnWrap link={link} type={type} text={text} onClick={() => {setLink(text); setOpen(!open)}}>
+            <Row align="center" >
+                {items.icon && items.icon}
+            <BtnText type={type} link={link} text={text}>{text}</BtnText>
+            </Row>
+            <Text weight="400" size={11} color={unlimitColor}>{items.contents ? items.contents.length : items.subcontents ? items.subcontents.length : null}</Text>
+        </BtnWrap>
     )
 }
+
+export default RightBar;

@@ -32,22 +32,24 @@ export const AtomIcon = ({width = 50, height = 50, stroke = "white"}) => (
     </svg>
 )
 
-export const UniversalIcon = ({width = "189", height = "144", stroke="white"}) => (
+export const UniversalIcon = ({width = "189", height = "144", stroke="white", strokeWidth ="4"}) => (
     <svg width={width} height={height} viewBox="0 0 189 144" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M165 88.2139L182.216 90.1715L178.197 98.5568" stroke={stroke} strokeWidth="4"/>
-        <path d="M23.8144 140.343L6.59833 138.385L10.6175 130" stroke={stroke} strokeWidth="4"/>
-        <circle cx="83" cy="46" r="44.5" stroke={stroke} strokeWidth="4"/>
-        <path d="M9 137.802L180.695 91" stroke={stroke} strokeWidth="4"/>
+        <path d="M165 88.2139L182.216 90.1715L178.197 98.5568" stroke={stroke} strokeWidth={strokeWidth} />
+        <path d="M23.8144 140.343L6.59833 138.385L10.6175 130" stroke={stroke} strokeWidth={strokeWidth} />
+        <circle cx="83" cy="46" r="44.5" stroke={stroke} strokeWidth={strokeWidth} />
+        <path d="M9 137.802L180.695 91" stroke={stroke} strokeWidth={strokeWidth} />
     </svg>
 )
 
-export const LifeIcon = ({width = "113", height = "173", stroke = "white"}) => (
+export const LifeIcon = ({width = "113", height = "173", stroke = "white", strokeWidth = "4"}) => (
     <svg width={width} height={height} viewBox="0 0 113 133" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M76.0604 28.6382L1.05469 50.0869V130.625L76.0604 103.919V28.6382Z" stroke={stroke} strokeWidth="4"/>
-        <path d="M112 2L36.9946 23.4487V103.986L112 77.2807V2Z" stroke={stroke} strokeWidth="4"/>
+        <path d="M76.0604 28.6382L1.05469 50.0869V130.625L76.0604 103.919V28.6382Z" stroke={stroke} strokeWidth={strokeWidth} />
+        <path d="M112 2L36.9946 23.4487V103.986L112 77.2807V2Z" stroke={stroke} strokeWidth={strokeWidth} />
     </svg>
 )
 
-export const LawIcon = ({width = "3", height = "3", stroke = "white"}) => (
-    <Flex br="50%" className="hover" width={width+'px'} height={height+'px'} bg={stroke} />
+export const LawIcon = ({width = "40", height = "40", stroke = "white"}) => (
+    <Flex align="center" justify="center" width={width+'px'} height={height+'px'}>
+        <Flex br="50%" className="hover" width={3+'px'} height={3+'px'} bg={stroke} />
+    </Flex>
 )
