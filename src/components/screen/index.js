@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
-import { RouteEvent } from '../../contexts/globalContext';
-import {Flex, Col, Row, Text} from '../common/base';
 
 import AI from './ai';
 import Landing from './landing';
 import Life from './life';
 import UniversalPhysics from './universalphysics';
 
-export const Screen = ({}) => {
-    const {route, setRoute} = RouteEvent();
+export const Screen = ({route, setRoute}) => {
     return (
         <div width="100vw" height="100vh">
             {/* <Landing route={route} setRoute={setRoute} /> */}

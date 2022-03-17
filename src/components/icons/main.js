@@ -48,8 +48,8 @@ export const LifeIcon = ({width = "113", height = "173", stroke = "white", strok
     </svg>
 )
 
-export const LawIcon = ({width = "40", height = "40", stroke = "white"}) => (
+export const LawIcon = ({width = "40", height = "40", stroke = "white", size = 3}) => (
     <Flex align="center" justify="center" width={width+'px'} height={height+'px'}>
-        <Flex br="50%" className="hover" width={3+'px'} height={3+'px'} bg={stroke} />
+        <Flex br="50%" className="hover" width={size+'px'} height={size+'px'} bg={stroke} />
     </Flex>
 )

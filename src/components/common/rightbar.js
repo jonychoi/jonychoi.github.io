@@ -8,7 +8,6 @@ import jonystructure from '../screen/jony/structure'
 import { componentBger, darkMode, unlimitColor } from '../../styles';
 import {LeftIcon} from '../icons/utilities';
 import styled from 'styled-components';
-import { RouteEvent } from '../../contexts/globalContext';
 
 const CloseOpenBtn = styled(Flex)`
     height: 100%;
@@ -31,16 +30,13 @@ const CloseOpenBtn = styled(Flex)`
     };
 `;
 
-export const RightBar = ({}) => {
+export const RightBar = ({route}) => {
     // 임시
     const [link, setLink] = useState(null);
 
     const [open, setOpen] = useState(true);
-    
-    //not temp
-    const {route, setRoute} = RouteEvent();
-    return (
-        <Row width="340px" position="fixed" height="100vh" shadow={true} style={{right: open ? 0 : -300, top: 0, zIndex: 1000, transition: 'all 300ms'}}>
+        return (
+        <Row width="350px" position="fixed" height="100vh" shadow={true} style={{right: open ? 0 : -310, top: 0, zIndex: 1000, transition: 'all 300ms'}}>
             <CloseOpenBtn onClick={() => setOpen(!open)} open={open}>
                 <LeftIcon height={25} width={10} strokeWidth="3" />
             </CloseOpenBtn>
@@ -71,6 +67,7 @@ export const BtnText = styled(Text)`
     margin-left: ${(props) => props.type === 0 && 10 || props.type === 3 && 20 || props.type === 2 && 10}px;
     line-height: ${(props) => props.type === 0 ? 18 : props.type === 1 ? 16 : 16}px;
     color: ${(props) => props.type >= 2 && props.text === props.link && "#00dcff"};
+    font-family: Montserrat;
 `;
 
 export const BtnWrap = styled(Row)`

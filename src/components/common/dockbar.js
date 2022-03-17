@@ -3,7 +3,6 @@ import {Row, Flex, Col, Text} from './base';
 import {darklight} from '../../styles';
 import styled from 'styled-components';
 import { AtomIcon, LawIcon, LifeIcon, Logo, UniversalIcon } from '../icons/main';
-import { RouteEvent } from '../../contexts/globalContext';
 
 const BtnWrap = styled(Col)`
     :hover {
@@ -43,8 +42,7 @@ const BtnWrap = styled(Col)`
     justify-content: space-between;
 `;
 
-export const DockBar = ({}) => {
-    const {route, setRoute} = RouteEvent();
+export const DockBar = ({route, setRoute}) => {
     return (
         <Flex height="80px" width="80%" position="fixed" zIndex="1000" style={{bottom: 10, left: '10%'}}>
             <Row justify="space-between" align="center" width="100%" height="100%">
