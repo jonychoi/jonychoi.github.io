@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Row, Flex, Text} from './base';
 import mainstructure from '../screen/landing/structure';
-import aistructure from '../screen/ai/structure';
-import lifestructure from '../screen/life/structure';
-import universalstructure from '../screen/universalphysics/structure';
+import aistructure from '../screen/ai';
+import lifestructure from '../screen/life';
+import universalstructure from '../screen/universalphysics';
 import jonystructure from '../screen/jony/structure'
 import { componentBger, darkMode, unlimitColor } from '../../styles';
 import {LeftIcon} from '../icons/utilities';
@@ -34,10 +34,22 @@ export const RightBar = ({route}) => {
     // 임시
     const [link, setLink] = useState(null);
 
-    const [open, setOpen] = useState(true);
-        return (
+    const [open, setOpen] = useState(false);
+    // set if user close the rightbar once, then not automatically showing by changing screen
+    const [initialopen, setinitialopen] = useState(false);
+    useEffect(() => {
+        const opener = () => {
+            if (route === 0 || route === 1 || route === 5){
+                setOpen(false)
+            } else {
+                setOpen(true);
+            };
+        };
+        !initialopen && opener();
+    }, [route])
+    return (
         <Row width="350px" position="fixed" height="100vh" shadow={true} style={{right: open ? 0 : -310, top: 0, zIndex: 1000, transition: 'all 300ms'}}>
-            <CloseOpenBtn onClick={() => setOpen(!open)} open={open}>
+            <CloseOpenBtn onClick={() => {setOpen(!open); setinitialopen(true)}} open={open}>
                 <LeftIcon height={25} width={10} strokeWidth="3" />
             </CloseOpenBtn>
             <Flex width="100%" height="100%" style={{display: 'block', overflowY: 'scroll'}} bg={componentBger()}>

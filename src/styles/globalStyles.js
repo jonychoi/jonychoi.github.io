@@ -14,6 +14,12 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background-color: ${(props) => props.darkMode ? darkBg : lightBg};
   }
+
+  .jupyter, .readme {
+    color: ${(props) => props.darkMode ? "white" : "black"};
+    line-height: 24px;
+    font-size: 15px;
+  }
   
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

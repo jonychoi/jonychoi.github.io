@@ -5,7 +5,7 @@ import Intro from './intro';
 export const Landing = ({route, setRoute}) => {
     return (
         <Flex>
-            <Intro />
+            <Intro route={route} setRoute={setRoute} />
         </Flex>
     );
 };

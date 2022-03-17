@@ -1,6 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Flex, Col, Row, Text} from '../base';
 import {opaciter, unlimitColor} from '../../../styles';
+import ReactMarkdown from 'react-markdown';
+import JupyterViewer from "react-jupyter-notebook";
+
+const gfm = require('remark-gfm');
 
 export const StatusBar = ({}) => {
     return (
@@ -49,10 +53,58 @@ export const ArticleTop = ({content}) => {
     )
 };
 
-export const ArticleMain = ({}) => {
+export const ArticleMain = ({content}) => {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [data, setData] = useState([]);
+    useEffect(() => {
+      if (content.type === 'jupyter') {
+        fetch(content.src)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setData(result);
+            setIsLoaded(true);
+          },
+          // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+      } else if (content.type === 'python') {
+        
+      } else if (content.type === 'readme'){
+        fetch(content.src)
+        .then(res => res.text())
+        .then(
+          (result) => {
+            console.log(result)
+            setData(result);
+            setIsLoaded(true);
+          },
+          // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+      }
+    }, [content.type])
     return (
         <Col>
-        
+         {error ? <Text>Error: {error.message}</Text> :
+           !isLoaded ? <Text>Loading...</Text> : 
+           <>
+            {content.type === 'jupyter' &&
+                <div className="jupyter">
+                    <JupyterViewer codeBlockStyles={{hljsStyle: "stackoverflowDark"}} rawIpynb={data} />
+                </div>}
+            {content.type === "readme" && 
+                <div className='readme'>
+                    <ReactMarkdown remarkPlugins={[gfm]} children={data} />
+                </div>}
+            </>}
         </Col>
     )
 }

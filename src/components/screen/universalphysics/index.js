@@ -1,12 +1,14 @@
-import React from 'react';
-import { Flex } from '../../common/base';
+import { UniversalIcon } from "../../icons/main";
 
-export const UniversalPhysics = ({route, setRoute}) => {
-    return (
-        <Flex>
+export const structure = {
+    title: "Universal Physics",
+    icon: <UniversalIcon width={24} height={24} stroke="#00dcff" strokeWidth="6" />,
+    contents: [
+        {
+            title: "Universal Physics",
+        
+        }
+    ]
+}
 
-        </Flex>
-    );
-};
-
-export default UniversalPhysics;
+export default structure;
