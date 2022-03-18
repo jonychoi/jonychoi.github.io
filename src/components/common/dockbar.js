@@ -44,7 +44,7 @@ const BtnWrap = styled(Col)`
 
 export const DockBar = ({route, setRoute}) => {
     return (
-        <Flex height="80px" width="80%" position="fixed" zIndex="1000" style={{bottom: 10, left: '10%'}}>
+        <Flex height="100px" width="80%" position="fixed" zIndex="1000" style={{bottom: 0, left: '10%', backgroundImage: "-webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,0.5))"}}>
             <Row justify="space-between" align="center" width="100%" height="100%">
                 <BtnWrap route={route} screenNum={1} onClick={() => setRoute(1)}>
                     <Flex align="center" justify="center" flex={1}>
