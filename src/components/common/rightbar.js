@@ -48,7 +48,7 @@ export const RightBar = ({route}) => {
         !initialopen && opener();
     }, [route])
     return (
-        <Row width="350px" position="fixed" height="100vh" shadow={true} style={{right: open ? 0 : -310, top: 0, zIndex: 1000, transition: 'all 300ms'}}>
+        <Row width="350px" position="fixed" height="100vh" shadow={true} style={{right: open ? 0 : -310, top: 0, zIndex: 1001, transition: 'all 300ms'}}>
             <CloseOpenBtn onClick={() => {setOpen(!open); setinitialopen(true)}} open={open}>
                 <LeftIcon height={25} width={10} strokeWidth="3" />
             </CloseOpenBtn>
