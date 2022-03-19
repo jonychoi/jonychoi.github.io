@@ -1,4 +1,10 @@
 import { AtomIcon } from '../../icons/main';
+import paperReview from './computer-vision/papers-reviews';
+
+export const cvReviewStructure = {
+        title: "Vision Papers Reviews",
+        contents: paperReview,
+}
 
 export const structure = {
     title: "Artificial Intelligence",
@@ -7,7 +13,7 @@ export const structure = {
         {
             title: "Intro to Artificial Intelligence",
             type: "readme",
-            src: "https://raw.githubusercontent.com/jonychoi/Artificial-Intelligence/main/README.md",
+            src: "https://github.com/jonychoi/Artificial-Intelligence/main/README.md",
             subcontents: [
                 {
                     title: "What is A.I?",
@@ -116,7 +122,17 @@ export const structure = {
             ]
         },
         {
-            title: "Computer Vision"
+            title: "Computer Vision",
+            subcontents: [
+                {
+                    title: "Conventional Computer Vision",
+                },
+                {
+                    title: "Computer Vision Paper Reviews",
+                    type: "readme",
+                    src: "https://github.com/jonychoi/Computer-Vision-Paper-Reviews/blob/main/README.md",
+                }
+            ]
         },
         {
             title: "Natural Language Processing"

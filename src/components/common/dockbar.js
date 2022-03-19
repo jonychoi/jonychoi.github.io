@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Row, Flex, Col, Text} from './base';
 import {darklight} from '../../styles';
 import styled from 'styled-components';
@@ -43,6 +43,13 @@ const BtnWrap = styled(Col)`
 `;
 
 export const DockBar = ({route, setRoute}) => {
+    const [open, setOpen] = useState(false);
+    useEffect(() => {
+        const opener = () => {
+
+        }
+        opener();
+    }, [route])
     return (
         <Flex height="100px" width="80%" position="fixed" zIndex="1000" style={{bottom: 0, left: '10%', backgroundImage: "-webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,0.5))"}}>
             <Row justify="space-between" align="center" width="100%" height="100%">

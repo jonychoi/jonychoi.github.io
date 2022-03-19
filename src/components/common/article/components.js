@@ -3,6 +3,7 @@ import {Flex, Col, Row, Text} from '../base';
 import {opaciter, unlimitColor} from '../../../styles';
 import ReactMarkdown from 'react-markdown';
 import JupyterViewer from "react-jupyter-notebook";
+import { LoadEvent } from '../../../contexts/globalContext';
 
 const gfm = require('remark-gfm');
 
@@ -30,7 +31,7 @@ export const StatusBar = ({}) => {
 export const ArticleComponent = ({content}) => {
     return (
         <Col width="100%">
-            <ArticleTop content={content} />
+            {/* <ArticleTop content={content} /> */}
             <ArticleMain content={content} />
             <ArticleBottom content={content} />
         </Col>
@@ -55,42 +56,51 @@ export const ArticleTop = ({content}) => {
 
 export const ArticleMain = ({content}) => {
     const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState([]);
+    const {isLoaded, setIsLoaded} = LoadEvent();
     useEffect(() => {
-      if (content.type === 'jupyter') {
-        fetch(content.src)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setData(result);
-            setIsLoaded(true);
-          },
-          // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
-      } else if (content.type === 'python') {
-        
-      } else if (content.type === 'readme'){
-        fetch(content.src)
-        .then(res => res.text())
-        .then(
-          (result) => {
-            console.log(result)
-            setData(result);
-            setIsLoaded(true);
-          },
-          // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
-      }
-    }, [content.type])
+        console.log(content.src);
+        let src;
+        if (content.src){
+            src = content.src.replace("github.com", "raw.githubusercontent.com")
+            src = src.replace("blob/", "");
+            console.log(src);
+        }
+        if (content.type === 'jupyter') {
+            fetch(src)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                console.log(result);
+                setData(result);
+                setError(null);
+                setIsLoaded(true);
+            },
+            // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            })
+        } else if (content.type === 'python') {
+            
+        } else if (content.type === 'readme'){
+            fetch(src)
+            .then(res => res.text())
+            .then(
+                (result) => {
+                    console.log(result)
+                    setData(result);
+                    setError(null);
+                    setIsLoaded(true);
+                },
+                // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+        }
+    }, [content])
     return (
         <Col>
          {error ? <Text>Error: {error.message}</Text> :
