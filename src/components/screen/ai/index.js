@@ -139,6 +139,12 @@ export const structure = {
         },
         {
             title: "Brain and Cognitive"
+        },
+        {
+            title: 'Explainable A.I'
+        },
+        {
+            title: "Ethical A.I"
         }
     ]
 }
