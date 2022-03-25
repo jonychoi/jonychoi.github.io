@@ -102,7 +102,7 @@ export const BtnWrap = styled(Row)`
     user-select: none;
     border-left: ${(props) => props.type <= 1 && 'solid 1px #00dcff'};
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
 `;
 
 export const Btn = ({reviewOpen, setReviewOpen, open, setOpen, link, setLink, text, type, items, review}) => {
